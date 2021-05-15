@@ -1,0 +1,60 @@
+/************************ restaurantList *****************************/
+
+restaurantList=[{restaurant:"Mcdonalds",address:"Hyderabad",city:"Hyderabad"},
+        {restaurant:"Zomato",address:"Banglore",city:"Banglore"},
+        {restaurant:"pizzaHut",address:"Delhi",city:"Delhi"},
+        {restaurant:"starBucks",address:"Mumbai",city:"Mumbai"},
+        {restaurant:"paradise",address:"Chennai",city:"Chennai"}];
+  
+/********************* printAllRestaurantNames ********************/ 
+     
+var printAllRestaurantNames=Array.from(new Set(restaurantList.map(({restaurant}) => restaurant)));
+     console.log(printAllRestaurantNames)
+  
+/****************** restaurantByCity *****************************/   
+restaurantList.forEach(function(cityNames){
+console.log(cityNames.city);
+});
+var restaurantByCity = restaurantList.filter(rest => rest=='city');
+console.log(restaurantByCity)
+//var filterRestaurantBycity=restaurantList.filter(({city}) => city);
+//console.log(filterRestaurantBycity)
+
+/********************* PunjabiTadka Restaurant **********************/
+var data = 
+    [
+       {id:1, order: "Below 500", orderData:20},
+       
+
+       {id:2, order: "500-1000", orderData:29},
+       
+
+       {id:3, order: "1000-1500", orderData:30},
+       
+       {id:4, order: "1500-2000", orderData:44},
+       
+      
+      {id:5, order: "Above 2000", orderData:76},
+       
+    ];
+
+ordersum = {}
+
+data.map(function(entry) {
+  
+  ordersum[entry.id] = (ordersum[entry.id]||0) + entry.orderData
+  
+})
+const orderData=[20,29,30,44,76];
+let totalSum=0;
+for(let i=0;i<orderData.length;i++)
+{
+totalSum+=orderData[i];
+}
+
+data.map(function(entry) {
+  
+  entry.percent = entry.orderData /totalSum * 100;
+  
+  document.write(JSON.stringify(entry)  + '<br>')
+})
